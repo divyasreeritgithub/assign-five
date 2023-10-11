@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        height: 100vh;
+        background-color: #34568b;
+        user-select: none;
+      }
+
+      .box {
+        width: 400px;
+        padding: 20px;
+        background-color: white;
+        border: 4px;
+      }
+
+
+      .file-upload-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+  
+      .file-upload-label {
+        background-color: #1172c4;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 2px solid #1172c4;
+        border-radius: 5px;
+        position: relative;
+        right: -30%;
+        border-radius: 5px;
+      }
+
+  
+      .file-input {
+        display: none; 
+      }
+
+      img {
+        width: 100%;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="file-upload-container">
+      <div class="box">
+        
+        <label for="file1" class="file-upload-label">Choose Image</label>
+        
+        <input type="file" id="file1" class="file-input" accept="image/*" />
+        <div class="preview">
+          <img src="" alt="" id="img-preview" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let file = document.getElementById("file1");
+      let preview = document.getElementById("img-preview");
+
+      file.onchange = function (event) {
+        let src = URL.createObjectURL(event.target.files[0]);
+        preview.src = src;
+        document.querySelector("label").innerText = "Change Image";
+      };
+    </script>
+  </body>
+</html>
